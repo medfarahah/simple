@@ -172,8 +172,7 @@ export default function Home() {
 
   const fadeInUp = {
     initial: { opacity: 0, y: 60 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6 }
+    animate: { opacity: 1, y: 0, transition: { duration: 0.6 } }
   };
 
   const staggerContainer = {
@@ -277,7 +276,9 @@ export default function Home() {
           className="relative z-10 text-center px-4"
         >
           <motion.h1
-            variants={fadeInUp}
+            initial={{ opacity: 0, y: 60 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
             className="text-3xl sm:text-5xl md:text-7xl font-bold text-white mb-6 leading-tight"
           >
             Your Journey,
@@ -285,13 +286,17 @@ export default function Home() {
             <span className="bg-gradient-to-r from-accent-300 via-accent-400 to-accent-500 bg-clip-text text-transparent">Our Priority</span>
           </motion.h1>
           <motion.p
-            variants={fadeInUp}
+            initial={{ opacity: 0, y: 60 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             className="text-base sm:text-xl md:text-2xl text-white/90 mb-8 max-w-2xl mx-auto px-4"
           >
             Experience comfort, safety, and reliability with GoTransit
           </motion.p>
           <motion.div
-            variants={fadeInUp}
+            initial={{ opacity: 0, y: 60 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
             className="flex flex-col sm:flex-row gap-4 justify-center px-4"
           >
             <motion.a
