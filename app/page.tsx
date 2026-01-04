@@ -9,21 +9,41 @@ function ContactForm() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate sending message
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSuccess(true);
+    try {
+      const formDataToSend = new FormData();
+      formDataToSend.append('name', formData.name);
+      formDataToSend.append('email', formData.email);
+      formDataToSend.append('message', formData.message);
+      formDataToSend.append('access_key', '903fcab1-818d-44e7-ade0-d83b24eacabd');
 
-      // Reset after 3 seconds
-      setTimeout(() => {
-        setIsSuccess(false);
-        setFormData({ name: '', email: '', message: '' });
-      }, 3000);
-    }, 2000);
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formDataToSend
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setIsSubmitting(false);
+        setIsSuccess(true);
+
+        // Reset after 3 seconds
+        setTimeout(() => {
+          setIsSuccess(false);
+          setFormData({ name: '', email: '', message: '' });
+        }, 3000);
+      } else {
+        setIsSubmitting(false);
+        alert('Failed to send message. Please try again.');
+      }
+    } catch (error) {
+      setIsSubmitting(false);
+      alert('An error occurred. Please try again.');
+    }
   };
 
   return (
@@ -625,7 +645,7 @@ export default function Home() {
             </div>
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 Express Bus Company. All rights reserved.</p>
+            <p>&copy; 2026 MFA. All rights reserved.</p>
           </div>
         </div>
       </footer>
