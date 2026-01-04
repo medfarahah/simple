@@ -583,7 +583,7 @@ export default function Home() {
             className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 text-center"
           >
             {[
-              { icon: '📞', title: 'Phone', info: '+1 (555) 123-4567' },
+              { icon: '📞', title: 'Phone', info: '+25377485495' },
               { icon: '✉️', title: 'Email', info: 'info@expressbus.com' },
               { icon: '📍', title: 'Address', info: '123 Bus Street, City' }
             ].map((contact, index) => (
